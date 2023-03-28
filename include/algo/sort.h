@@ -29,24 +29,21 @@ void merge(std::vector<E>& v,
         }
         ++k;
     }
-    if (!d1.empty())
+
+    while (!d1.empty())
     {
-        while (!d1.empty())
-        {
-            v.at(start + k) = d1.front();
-            d1.pop_front();
-            ++k;
-        }
+        v.at(start + k) = d1.front();
+        d1.pop_front();
+        ++k;
     }
-    if (!d2.empty())
+
+    while (!d2.empty())
     {
-        while (!d2.empty())
-        {
-            v.at(start + k) = d2.front();
-            d2.pop_front();
-            ++k;
-        }
+        v.at(start + k) = d2.front();
+        d2.pop_front();
+        ++k;
     }
+
     return;
 }
 

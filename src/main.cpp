@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
     }
     */
 
-    std::vector<long> v{3, 5, 4, -1, 2, 1, -2};
+    std::vector<long> v{0, 3, 5, 4, -1, 2, 1, -2};
     merge_sort(v);
     for (const auto& i : v)
     {
