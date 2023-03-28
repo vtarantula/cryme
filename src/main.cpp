@@ -9,7 +9,7 @@
 #include "net/client/redis_client.h"
 #include "net/server/redis_server.h"
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
     /* code */
     std::cout << "*** Starting App ***" << std::endl;
@@ -18,28 +18,35 @@ int main(int argc, char const *argv[])
     // auto i = generate_total(v);
     // std::cout << "Number of 3: " << std::count(std::begin(v), std::end(v), 3) << std::endl;
 
+    int opt;
+    struct option longopts[] = {
+        {"server", 0, NULL, 's'},
+        {"client", 0, NULL, 'c'},
+        {0, 0, 0, 0}
+    };
+
     // https://build-your-own.org/redis/03_hello_cs
-    /*
     int port = 1234;
-    if (argc == 2)
+
+    while ((opt = getopt_long(argc, argv, ":cs", longopts, NULL)) != -1)
     {
-        std::string action(argv[1]);
-        if (action == "server")
+        switch(opt) 
         {
-            server_listen(&port);
-        } else if (action == "client")
-        {
-            client_connect(&port);
+            case 'c':
+                client_connect(&port);
+                break;
+            case 's':
+                server_listen(&port);
+                break;
+            case ':':
+                printf("Option nneds a value\n");
+                break;
+            case '?':
+                printf("Unknown option: %c\n", opt);
+                break;
         }
     }
-    */
 
-    std::vector<long> v{0, 3, 5, 4, -1, 2, 1, -2};
-    merge_sort(v);
-    for (const auto& i : v)
-    {
-        std::cout << i << " ";
-    }
-    std::cout << std::endl;
+
     return 0;
 }
