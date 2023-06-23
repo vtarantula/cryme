@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
     // https://build-your-own.org/redis/03_hello_cs
     int port = 1234;
 
+    // TODO: use getsubopt to parse suboptions when this grows
     while ((opt = getopt_long(argc, argv, ":cs", longopts, NULL)) != -1)
     {
         switch(opt) 
