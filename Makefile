@@ -2,7 +2,7 @@
 # CC = clang++
 CC = g++
 INC = -I include
-CC_FLAGS = -std=c++20 -g $(INC) -Wall -Wextra
+CC_FLAGS = -v -std=c++20 -g $(INC) -Wall -Wextra
 
 # File names
 CURRENT_DIR := $(shell basename $(CURDIR))

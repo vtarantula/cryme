@@ -3,6 +3,7 @@
 #include <getopt.h>
 
 // Application headers
+#include "utils/utils.h"
 #include "utils/mathutils.h"
 #include "ds/list.h"
 #include "algo/sort.h"
@@ -84,6 +85,7 @@ void parse_args(int* argc, char** argv)
                 printf("Missing argument for [%c]\n", optopt);
                 usage(stderr, 1);
                 break;
+            // Use '-' in case you want to uncomment the below
             // case 1:   // Non-optional arguments passed at the end
             //     printf("Additional argument for [%s]\n", optarg);
             //     break;
