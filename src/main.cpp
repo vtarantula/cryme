@@ -1,6 +1,7 @@
 // C++ Headers
 #include <string>
 #include <getopt.h>
+#include <filesystem>
 
 // Application headers
 #include "utils/utils.h"
@@ -14,6 +15,13 @@
 const int PORT_NUM = 1234;
 const char* PROGRAM_NAME = nullptr;
 
+void run()
+{
+    std::string_view s1 = {"We are all one!"};
+    std::string_view s2 = {"We are all one!\0"};
+    printf("==> Test: %s\n", s1.data());
+    printf("==> Test: %s\n", s2.data());
+}
 
 void usage(FILE* stream, int exit_code)
 {
@@ -90,7 +98,7 @@ void parse_args(int* argc, char** argv)
             //     printf("Additional argument for [%s]\n", optarg);
             //     break;
             default:
-                printf("Def\n");
+                printf("Running with default options...\n");
                 usage(stdout, 0);
                 break;
         }
@@ -108,10 +116,11 @@ void parse_args(int* argc, char** argv)
     if (f_server)
     {
         server_listen(&PORT_NUM);
-    }
-    if (f_client)
+    } else if (f_client)
     {
         client_connect(&PORT_NUM);
+    } else {
+        run();
     }
     return;
 }
@@ -119,7 +128,7 @@ void parse_args(int* argc, char** argv)
 int main(int argc, char *argv[])
 {
     /* code */
-    std::cout << "*** Starting App ***" << std::endl;
+    std::cout << "*** " << std::filesystem::canonical(".") << " ***" << std::endl;
     PROGRAM_NAME = argv[0];
 
     // auto i = generate_total(v);
